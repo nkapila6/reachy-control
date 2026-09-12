@@ -1,0 +1,26 @@
+[project]
+name = "reachy-control"
+version = "0.1.0"
+description = "Reachy Mini local agent (OpenRouter LLM/TTS + ElevenLabs Scribe STT + Exa context)"
+requires-python = ">=3.11"
+dependencies = [
+    "requests",
+    "numpy",
+    "reachy-mini==1.9.0",
+    "websockets",
+]
+
+[project.scripts]
+reachy-agent = "main:main"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.6.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["main.py", "stt.py", "llm.py", "tts.py", "reachy_audio.py", "motion.py", "context_tools.py", "pinchtab_tools.py", "agent_tools.py"]
